@@ -1,7 +1,7 @@
 {
   "name": "MANMIN 구조토목",
   "short_name": "구조토목",
-  "description": "구조·토목 계산서 통합 포털 — 구조 2 · 토목 2 · 4종 by Engineer Kim Manmin · Ver 1.0.1",
+  "description": "구조·토목 계산서 통합 포털 — 구조 2 · 토목 2 · 4종 by Engineer Kim Manmin · Ver 1.0",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait-primary",
