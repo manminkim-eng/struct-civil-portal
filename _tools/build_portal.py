@@ -8,13 +8,13 @@ MANMIN 구조·토목 계산서 통합 포털 — index.html 생성기
 """
 import html, os, datetime
 
-VER = "1.0.10"   # 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
+VER = "1.0.12"   # 1.0.12 (2026-11-09) 토목 52 N값 지내력 환산 등재 — 구조 2 · 토목 3 · KDS 41 19 00 · 11 50 05 근거 행 / 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
 CHECKED = "2026-10-30"          # 근거 조문 대조일
 BASE = "https://manminkim-eng.github.io"
 
 GROUPS = [
     ("struct", "구조", "내진설계 대상 · 설계하중"),
-    ("civil",  "토목", "단지 우수·오수 배관 · 옹벽"),
+    ("civil",  "토목", "단지 우수·오수 배관 · 옹벽 · 지내력"),
 ]
 
 # no, group, name, en, repo, ver, accent, desc(정성 서술 — 수치 기재 금지), basis(근거 칩)
@@ -31,6 +31,9 @@ TOOLS = [
     ("51", "civil", "옹벽 안전성 검토", "Retaining Wall", "tomog-ongbyeog", "5.1.2", "#2dd4bf",
      "콘크리트 옹벽의 전도 · 활동 · 지지력과 앵커 보강을 검토합니다.",
      ["KDS 11 80 05", "KDS 11 60 00", "KDS 11 70 05", "시설물안전법 시행령 별표 1 제8호"]),
+    ("52", "civil", "N값 지내력 환산", "Soil Bearing Capacity", "Soil-Bearing-Capacity", "1.0.1", "#2dd4bf",
+     "표준관입시험 N값을 보정 · 환산해 얕은기초의 허용지지력(지내력)을 추정하고, 입증자료가 없을 때의 추정 지지력 상한과 대조합니다.",
+     ["KDS 41 19 00 4.2.2 · 표 4.2-1", "KDS 11 50 05", "KDS 11 30 05"]),
 ]
 
 # 이름, 구분, 현행(번호 · 시행일), 관련 조문, 적용 도구 번호
@@ -44,9 +47,9 @@ LAWS = [
     ("시설물의 안전 및 유지관리에 관한 특별법 시행령", "대통령령",
      "2026-09-15 시행", "제4조 · 별표 1(제1종시설물 및 제2종시설물의 종류) 제8호 옹벽 및 절토사면", "51"),
     ("KDS 41 건축구조기준", "국가건설기준(KCSC)",
-     "국가건설기준센터 현행본", "41 12 00 건축물 설계하중 · 41 17 00 건축물 내진설계기준", "45 · 46"),
+     "국가건설기준센터 현행본", "41 12 00 건축물 설계하중 · 41 17 00 건축물 내진설계기준 · 41 19 00 건축물 기초구조 설계기준", "45 · 46 · 52"),
     ("KDS 17 · 61 · 11 설계기준", "국가건설기준(KCSC)",
-     "국가건설기준센터 현행본", "17 10 00 내진설계 일반 · 61 10 00 하수도설계 일반사항 · 61 40 00 관로시설 설계기준 · 11 80 05 콘크리트옹벽 · 11 60 00 앵커 설계기준 · 11 70 05 쌓기·깎기", "46 · 50 · 51"),
+     "국가건설기준센터 현행본", "17 10 00 내진설계 일반 · 61 10 00 하수도설계 일반사항 · 61 40 00 관로시설 설계기준 · 11 80 05 콘크리트옹벽 · 11 60 00 앵커 설계기준 · 11 70 05 쌓기·깎기 · 11 50 05 얕은기초 설계기준 · 11 30 05 연약지반 설계 일반", "46 · 50 · 51 · 52"),
 ]
 
 e = html.escape
@@ -99,7 +102,7 @@ page = f'''<!DOCTYPE html>
 <meta property="og:site_name" content="MANMIN ENGINEERING">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="ENGINEER KIM MANMIN · 구조·토목 계산서 통합 포털">
-<meta property="og:description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 4종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
+<meta property="og:description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 {len(TOOLS)}종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
 <meta property="og:url" content="https://manminkim-eng.github.io/struct-civil-portal/">
 <meta property="og:image" content="https://manminkim-eng.github.io/struct-civil-portal/og-card.jpg">
 <meta property="og:image:secure_url" content="https://manminkim-eng.github.io/struct-civil-portal/og-card.jpg">
@@ -109,9 +112,9 @@ page = f'''<!DOCTYPE html>
 <meta property="og:image:alt" content="ENGINEER KIM MANMIN · 구조·토목 계산서 통합 포털">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ENGINEER KIM MANMIN · 구조·토목 계산서 통합 포털">
-<meta name="twitter:description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 4종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
+<meta name="twitter:description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 {len(TOOLS)}종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
 <meta name="twitter:image" content="https://manminkim-eng.github.io/struct-civil-portal/og-card.jpg">
-<meta name="description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 4종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
+<meta name="description" content="구조·토목 계산서 통합 포털 — 구조 · 토목 {len(TOOLS)}종 계산서와 근거 법령·설계기준 안내 | Engineer Kim Manmin">
 <meta name="theme-color" content="#120f1f">
 <meta name="color-scheme" content="dark">
 <link rel="manifest" href="manifest.json">
@@ -338,7 +341,7 @@ tbody th{{min-width:170px}}
 </header>
 
 <div class="stats">
-  <div class="st"><div class="st-n">{len(TOOLS)}</div><div class="st-l">구조 2 · 토목 2</div></div>
+  <div class="st"><div class="st-n">{len(TOOLS)}</div><div class="st-l">구조 2 · 토목 3</div></div>
   <div class="st"><div class="st-n">KDS 41</div><div class="st-l">건축구조기준</div></div>
   <div class="st"><div class="st-n">KDS 61 · 11</div><div class="st-l">하수도 · 옹벽</div></div>
   <div class="st"><div class="st-n">PWA</div><div class="st-l">오프라인 지원</div></div>
