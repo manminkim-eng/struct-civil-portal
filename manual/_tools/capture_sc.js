@@ -14,13 +14,13 @@ window.__tab=t=>{document.querySelector('.tab[data-tab="'+t+'"]').click();};`;
 const SHOTS=[
  {id:'s01_overview',pre:"__tab('all');window.scrollTo(0,0)",clip:'viewport',m:[['.pill','근거 조문 대조일'],['.ttl','포털 이름'],['.stats','요약 5칸'],['.tabs','분류 탭 · 근거 · 매뉴얼 · 앱 설치'],['nth:.tcard|0','계산서 카드']]},
  {id:'s02_header',clip:'.hd',m:[['.pill','근거 조문 대조일'],['.brand','ENGINEER KIM MANMIN'],['.ttl','구조·토목 계산서 통합 포털'],['.lead','포털 설명']]},
- {id:'s03_tabs',clip:'.tabs',m:[['nth:.tab|0','전체 4'],['nth:.tab|1','구조 2'],['nth:.tab|2','토목 2'],['nth:.tab|3','근거 법령·기준'],['nth:.tab-man|0','사용자 매뉴얼'],['#pwa-inst','앱 설치']]},
+ {id:'s03_tabs',clip:'.tabs',m:[['nth:.tab|0','전체 5'],['nth:.tab|1','구조 2'],['nth:.tab|2','토목 3'],['nth:.tab|3','근거 법령·기준'],['nth:.tab-man|0','사용자 매뉴얼'],['#pwa-inst','앱 설치']]},
  {id:'s04_struct',clip:'#g-struct',m:[['card:내진','45 내진설계 의무대상 판정'],['card:설계하중','46 건축물 설계하중']]},
- {id:'s05_civil',clip:'#g-civil',m:[['card:배관','50 단지 우수 · 오수 배관'],['card:옹벽','51 옹벽 안전성 검토']]},
+ {id:'s05_civil',clip:'#g-civil',m:[['card:배관','50 단지 우수 · 오수 배관'],['card:옹벽','51 옹벽 안전성 검토'],['card:지내력','52 N값 지내력 환산']]},
  {id:'s07_card',clip:'nth:.tcard|0',m:[['nth:.tc-no|0','공종 번호(S · 폴더 번호)'],['nth:.tc-ver|0','계산서 현재 버전'],['nth:.tc-name|0','계산서 이름'],['nth:.tc-desc|0','계산 내용'],['nth:.tc-chips|0','근거 기준 칩'],['nth:.tc-man|0','사용자 매뉴얼(새 창)'],['nth:.tc-go|0','계산서 열기']]},
  {id:'s08_law',clip:'#law',m:[['row:건축법 시행령','건축법 · 시행령'],['row:구조기준','구조기준 규칙'],['row:시설물','시설물안전법 시행령'],['row:KDS 41','KDS 41 건축구조기준'],['row:KDS 17','KDS 17 · 61 · 11'],['.note','안내 — 수치 기준은 계산서']]},
  {id:'s13_install_bar',pre:"document.getElementById('mm-hidebar').disabled=true;window.scrollTo(0,0)",wait:500,clip:'#pwa-bar',post:"document.getElementById('mm-hidebar').disabled=false",m:[['.pwa-bar-t','설치 안내'],['#pwa-no','닫기 — 이 세션 동안 다시 띄우지 않음'],['#pwa-yes','설치 — 브라우저 설치 창']]},
- {id:'s09_civil_tab',pre:"__tab('civil');window.scrollTo(0,0)",wait:600,clip:'viewport',post:"__tab('all')",m:[['nth:.tab|2','토목만 보기'],['#g-civil','토목 카드 2장']]},
+ {id:'s09_civil_tab',pre:"__tab('civil');window.scrollTo(0,0)",wait:600,clip:'viewport',post:"__tab('all')",m:[['nth:.tab|2','토목만 보기'],['#g-civil','토목 카드 3장']]},
 ];
 (async()=>{
  const s=await server(repo,PORT);const b=await chromium.launch();
