@@ -31,7 +31,7 @@ TOOLS = [
     ("51", "civil", "옹벽 안전성 검토", "Retaining Wall", "tomog-ongbyeog", "5.1.2", "#2dd4bf",
      "콘크리트 옹벽의 전도 · 활동 · 지지력과 앵커 보강을 검토합니다.",
      ["KDS 11 80 05", "KDS 11 60 00", "KDS 11 70 05", "시설물안전법 시행령 별표 1 제8호"]),
-    ("52", "civil", "N값 지내력 환산", "Soil Bearing Capacity", "Soil-Bearing-Capacity", "1.1.0", "#2dd4bf",
+    ("52", "civil", "N값 지내력 환산", "Soil Bearing Capacity", "Soil-Bearing-Capacity", "1.1.2", "#2dd4bf",
      "표준관입시험 N값을 보정 · 환산해 얕은기초의 허용지지력(지내력)을 추정하고, 입증자료가 없을 때의 추정 지지력 상한과 대조합니다.",
      ["KDS 41 19 00 4.2.2 · 표 4.2-1", "KDS 11 50 05", "KDS 11 30 05"]),
 ]
