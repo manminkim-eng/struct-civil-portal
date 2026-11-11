@@ -1,4 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
+   v1.0.16 2026-11-11 — 카드 판 46 설계하중 Ver 6.1 · 캐시명 v1.0.16
    v1.0.15 2026-11-11 — 카드 판 45 내진성능 Ver 6.1 · 근거표 건축법 · 시행령 2026-11-12 시행본 · 캐시명 v1.0.15
    v1.0.14 2026-11-10 — 사용자 매뉴얼 Ver-1.1(계산서 5종 · 지내력 포함 · 화면 재촬영) · 화면 변경 없음 · 캐시명 v1.0.14
    v1.0.13 2026-11-10 — 토목 52 N값 지내력 환산 카드 Ver 1.1(v1.1.0 보고서 PDF 불러오기 · 공별 지하수위) · 캐시명 v1.0.13
@@ -24,8 +25,8 @@ const mmMatch = (req, opt) => caches.keys()
   .then((ks) => ks.reduce((p, k) => p.then((r) => r || caches.open(k).then((c) => c.match(req, opt))), Promise.resolve(undefined)))
   .then((r) => (r && r.type === 'opaque' && req && req.mode === 'cors') ? undefined : r);
 
-const CACHE_NAME   = 'manmin-sc-portal-v1.0.15';
-const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.15';
+const CACHE_NAME   = 'manmin-sc-portal-v1.0.16';
+const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.16';
 
 const PRECACHE_URLS = [
   './',
