@@ -8,7 +8,7 @@ MANMIN 구조·토목 계산서 통합 포털 — index.html 생성기
 """
 import html, os, datetime
 
-VER = "1.0.18"   # 1.0.18 (2026-11-12) 카드 판 45 · 46 · 50 · 51 한 단계씩(건물개요 원본 v1.3, 정밀검토 C10 · C4 · §25-6-80) / 1.0.17 (2026-11-12) 카드 판 50 · 51 → 6.1(화면 확대 허용 · 입력값 경고 표시, 정밀검토 B17 · B10 · §25-6-78 · 79) / 1.0.16 (2026-11-11) 카드 판 46 설계하중 → 6.1(설하중 개정 예고 메모 · S6 안내) / 1.0.15 (2026-11-11) 카드 판 45 → 6.1(개정 메모 · 판 6.1, §25-6-68) · 근거표 건축법 · 시행령 2026-11-12 시행본 / 1.0.14 (2026-11-10) 사용자 매뉴얼 Ver-1.1(계산서 5종 · 지내력 포함 · 화면 재촬영) — 화면 변경 없음 / 1.0.13 (2026-11-10) 지내력 52 판 1.1.0(보고서 PDF 불러오기 · 공별 지하수위 · 매뉴얼 Ver-1.1) / 1.0.12 (2026-11-09) 토목 52 N값 지내력 환산 등재 — 구조 2 · 토목 3 · KDS 41 19 00 · 11 50 05 근거 행 / 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
+VER = "1.0.19"   # 1.0.19 (2026-11-12) 카드 판 4종 한 단계씩 · 포털 자체 Pretendard SRI(CDN 판 통일 · SRI, 정밀검토 C2 · §25-6-82) / 1.0.18 (2026-11-12) 카드 판 45 · 46 · 50 · 51 한 단계씩(건물개요 원본 v1.3, 정밀검토 C10 · C4 · §25-6-80) / 1.0.17 (2026-11-12) 카드 판 50 · 51 → 6.1(화면 확대 허용 · 입력값 경고 표시, 정밀검토 B17 · B10 · §25-6-78 · 79) / 1.0.16 (2026-11-11) 카드 판 46 설계하중 → 6.1(설하중 개정 예고 메모 · S6 안내) / 1.0.15 (2026-11-11) 카드 판 45 → 6.1(개정 메모 · 판 6.1, §25-6-68) · 근거표 건축법 · 시행령 2026-11-12 시행본 / 1.0.14 (2026-11-10) 사용자 매뉴얼 Ver-1.1(계산서 5종 · 지내력 포함 · 화면 재촬영) — 화면 변경 없음 / 1.0.13 (2026-11-10) 지내력 52 판 1.1.0(보고서 PDF 불러오기 · 공별 지하수위 · 매뉴얼 Ver-1.1) / 1.0.12 (2026-11-09) 토목 52 N값 지내력 환산 등재 — 구조 2 · 토목 3 · KDS 41 19 00 · 11 50 05 근거 행 / 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
 CHECKED = "2026-10-30"          # 근거 조문 대조일
 BASE = "https://manminkim-eng.github.io"
 
@@ -19,16 +19,16 @@ GROUPS = [
 
 # no, group, name, en, repo, ver, accent, desc(정성 서술 — 수치 기재 금지), basis(근거 칩)
 TOOLS = [
-    ("45", "struct", "내진설계 의무대상 판정", "Seismic Evaluation", "Seismic-Evaluation", "6.1.1", "#a78bfa",
+    ("45", "struct", "내진설계 의무대상 판정", "Seismic Evaluation", "Seismic-Evaluation", "6.1.2", "#a78bfa",
      "허가 신청일 시점의 법령 연혁에 따라 구조 안전 · 내진설계 확인 대상과 내진등급을 판별합니다.",
      ["건축법 제48조", "시행령 제32조", "구조기준 규칙 제56조 · 별표 11 · 12", "KDS 41 17 00"]),
-    ("46", "struct", "건축물 설계하중", "Design Load", "architectural-structure", "6.1.1", "#a78bfa",
+    ("46", "struct", "건축물 설계하중", "Design Load", "architectural-structure", "6.1.2", "#a78bfa",
      "고정 · 활 · 적설 · 풍 · 지진하중과 강도설계법 하중조합을 산정합니다.",
      ["KDS 41 12 00", "KDS 41 17 00", "KDS 17 10 00"]),
-    ("50", "civil", "단지 우수 · 오수 배관", "Site Drainage Piping", "civil-engineering-piping", "6.1.1", "#2dd4bf",
+    ("50", "civil", "단지 우수 · 오수 배관", "Site Drainage Piping", "civil-engineering-piping", "6.1.2", "#2dd4bf",
      "합리식 우수량과 계획 오수량으로 관경을 정하고 Manning 공식으로 유속을 검토합니다.",
      ["KDS 61 40 00", "KDS 61 10 00"]),
-    ("51", "civil", "옹벽 안전성 검토", "Retaining Wall", "tomog-ongbyeog", "6.1.1", "#2dd4bf",
+    ("51", "civil", "옹벽 안전성 검토", "Retaining Wall", "tomog-ongbyeog", "6.1.2", "#2dd4bf",
      "콘크리트 옹벽의 전도 · 활동 · 지지력과 앵커 보강을 검토합니다.",
      ["KDS 11 80 05", "KDS 11 60 00", "KDS 11 70 05", "시설물안전법 시행령 별표 1 제8호"]),
     ("52", "civil", "N값 지내력 환산", "Soil Bearing Capacity", "Soil-Bearing-Capacity", "1.1.2", "#2dd4bf",
@@ -124,7 +124,7 @@ page = f'''<!DOCTYPE html>
 <meta name="apple-mobile-web-app-title" content="구조토목">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" integrity="sha384-ei/b2Mz3F5J8nqTvpKS89CkzDCuD7Cc+/F+OsaPUKItzHgLNKnGq3rjtYq/B7RnO" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./assets/fonts/manmin-fonts.css"><!-- 로컬 폴백 폰트 -->
 <style>

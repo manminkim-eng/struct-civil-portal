@@ -1,4 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
+   v1.0.19 2026-11-12 — 카드 판 4종 한 단계씩 · 포털 자체 Pretendard SRI(CDN 판 통일 · SRI, 정밀검토 C2 · §25-6-82) · 캐시명 v1.0.19
    v1.0.18 2026-11-12 — 카드 판 45 · 46 · 50 · 51 한 단계씩(건물개요 원본 v1.3, 정밀검토 C10 · C4 · §25-6-80) · 캐시명 v1.0.18
    v1.0.17 2026-11-12 — 카드 판 50 단지 우수 · 오수 · 51 옹벽 Ver 6.1(정밀검토 B17 · B10 · §25-6-78 · 79) · 캐시명 v1.0.17
    v1.0.16 2026-11-11 — 카드 판 46 설계하중 Ver 6.1 · 캐시명 v1.0.16
@@ -27,8 +28,8 @@ const mmMatch = (req, opt) => caches.keys()
   .then((ks) => ks.reduce((p, k) => p.then((r) => r || caches.open(k).then((c) => c.match(req, opt))), Promise.resolve(undefined)))
   .then((r) => (r && r.type === 'opaque' && req && req.mode === 'cors') ? undefined : r);
 
-const CACHE_NAME   = 'manmin-sc-portal-v1.0.18';
-const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.18';
+const CACHE_NAME   = 'manmin-sc-portal-v1.0.19';
+const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.19';
 
 const PRECACHE_URLS = [
   './',
