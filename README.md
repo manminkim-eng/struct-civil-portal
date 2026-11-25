@@ -16,3 +16,9 @@
 - 홈페이지 허브: 구조 묶음 S-ALL · 토목 묶음 C-ALL (같은 포털)
 - 배포 경로: https://manminkim-eng.github.io/struct-civil-portal/
 - 구성: index.html · manifest.json · sw.js(캐시 접두어 manmin-sc-portal-) · icons/ · assets/fonts/(로컬 폴백) · _tools/ · manual/
+
+## v1.0.24 (2026-11-25) — 헤더 고정(MM-HEADER v1.1)
+
+- 헤더 고정 — 공통 원본 MM-HEADER v1.1 주입(태블릿 · 데스크톱만 — 폭 768px · 높이 600px 이상, 휴대폰은 고정 없음 · 머리+탭 sticky · 내리면 제목 한 줄+탭으로 접힘 · 다른 sticky 패널 top 보정) — 계산 · 인쇄 불변 · MIN 「추천안대로 승인」 · 「추천안대로 진행해줘」(모바일 제외).
+- 공통 원본 `67.개발자료[헤더고정]\버전s-1.1` · inject.py · check.py 「일치 v1.1」 · sw 캐시명 v1.0.24 · MM-PRINT · MM-PROJECT 구간 · 사용자 매뉴얼 변경 없음.
+
