@@ -1,7 +1,7 @@
 // 구조·토목 계산서 통합 포털 매뉴얼 화면 캡처 — usage: node capture_sc.js <repoDir> <outDir>  (1440×900 · DSF 1.25 · sw block)
 const {chromium}=require('playwright');const fs=require('fs');const path=require('path');const {setup,server}=require('./serve');
 const repo=path.resolve(process.argv[2]),out=path.resolve(process.argv[3]);fs.mkdirSync(out,{recursive:true});
-const VW=1440,VH=900,DSF=1.25,PORT=8964;
+const VW=1440,VH=900,DSF=1.25,PORT=+(process.env.MM_PORT||9012);
 // 설치 지원 브라우저 모사(beforeinstallprompt) · 안내 띠는 해당 캡처에서만 표시
 const FAKE=`window.__fire=function(){var e=new Event('beforeinstallprompt');e.prompt=function(){};e.userChoice=Promise.resolve({outcome:'dismissed'});window.dispatchEvent(e);};`;
 const HIDEBAR='.pwa-bar{display:none!important}html{scroll-behavior:auto!important}';
