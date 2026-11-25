@@ -1,4 +1,6 @@
 /* ═══════════════════════════════════════════════════════════════
+   v1.0.23 2026-11-25 — 카드 판 52 지내력 6.1.0 · 46 설계하중 6.1.4 · 근거표 대조 2026-11-25 · icon-96 미리 저장 · 설치 로그 캐시명 표기(건축 4차 교차검증 반영, §25-6-112) · 캐시명 v1.0.23
+   v1.0.22 2026-11-24 — 카드 판 50 토목배관 6.1.4(건축 3차, §25-6-111) · 캐시명 v1.0.22
    v1.0.21 2026-11-23 — 카드 판 51 옹벽 6.1.4(교차검증 반영 · §25-6-100) · 캐시명 v1.0.21
    v1.0.20 2026-11-12 — 카드 판 4종 한 단계씩(html2canvas SRI, 정밀검토 B8 · §25-6-87) · 캐시명 v1.0.20
    v1.0.19 2026-11-12 — 카드 판 4종 한 단계씩 · 포털 자체 Pretendard SRI(CDN 판 통일 · SRI, 정밀검토 C2 · §25-6-82) · 캐시명 v1.0.19
@@ -30,13 +32,14 @@ const mmMatch = (req, opt) => caches.keys()
   .then((ks) => ks.reduce((p, k) => p.then((r) => r || caches.open(k).then((c) => c.match(req, opt))), Promise.resolve(undefined)))
   .then((r) => (r && r.type === 'opaque' && req && req.mode === 'cors') ? undefined : r);
 
-const CACHE_NAME   = 'manmin-sc-portal-v1.0.22';
-const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.22';
+const CACHE_NAME   = 'manmin-sc-portal-v1.0.23';
+const STATIC_CACHE = 'manmin-sc-portal-static-v1.0.23';
 
 const PRECACHE_URLS = [
   './',
   './index.html',
   './manifest.json',
+  './icons/icon-96.png',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/apple-touch-icon.png',
@@ -50,7 +53,7 @@ const PRECACHE_URLS = [
 
 /* ── INSTALL ── */
 self.addEventListener('install', (event) => {
-  console.log('[SW] Installing sc-portal-v1.0.1...');
+  console.log('[SW] Installing ' + CACHE_NAME + '...');
   event.waitUntil(
     caches.open(STATIC_CACHE)
       .then((cache) => Promise.allSettled(PRECACHE_URLS.map((u) => cache.add(mmReq(u)).catch((e) => console.warn('[SW] precache skip:', u, e)))).catch((e) => console.warn('[SW] Pre-cache 일부 실패:', e)))
