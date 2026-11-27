@@ -8,7 +8,7 @@ MANMIN 구조·토목 계산서 통합 포털 — index.html 생성기
 """
 import html, os, datetime
 
-VER = "1.0.24"   # 1.0.24 (2026-11-25) 헤더 고정 — 분류 탭 줄 sticky(태블릿 · 데스크톱만, 휴대폰 고정 없음 · 공통 원본 MM-HEADER v1.0 · 67.개발자료[헤더고정]) · 생성 때 MM-HEADER 구간 보존 / 1.0.23 (2026-11-25) 카드 판 52 지내력 6.1.0(Ver 6.1) · 46 설계하중 6.1.4 · 근거표 대조 2026-11-25 · 제48조의2 · 제60조 내진등급 병기 · 제4조 제목 · KDS 11 50 05 정식 명칭 · 요약칸 자동(건축 4차 교차검증 반영, §25-6-112) / 1.0.22 (2026-11-24) 카드 판 50 토목배관 6.1.4(건축 3차 교차검증 반영 · 매뉴얼 Ver-6.1, §25-6-111) / 1.0.21 (2026-11-23) 카드 판 51 옹벽 6.1.4(교차검증 반영 · §25-6-100) / 1.0.20 (2026-11-12) 카드 판 4종 한 단계씩(html2canvas SRI, 정밀검토 B8 · §25-6-87) / 1.0.19 (2026-11-12) 카드 판 4종 한 단계씩 · 포털 자체 Pretendard SRI(CDN 판 통일 · SRI, 정밀검토 C2 · §25-6-82) / 1.0.18 (2026-11-12) 카드 판 45 · 46 · 50 · 51 한 단계씩(건물개요 원본 v1.3, 정밀검토 C10 · C4 · §25-6-80) / 1.0.17 (2026-11-12) 카드 판 50 · 51 → 6.1(화면 확대 허용 · 입력값 경고 표시, 정밀검토 B17 · B10 · §25-6-78 · 79) / 1.0.16 (2026-11-11) 카드 판 46 설계하중 → 6.1(설하중 개정 예고 메모 · S6 안내) / 1.0.15 (2026-11-11) 카드 판 45 → 6.1(개정 메모 · 판 6.1, §25-6-68) · 근거표 건축법 · 시행령 2026-11-12 시행본 / 1.0.14 (2026-11-10) 사용자 매뉴얼 Ver-1.1(계산서 5종 · 지내력 포함 · 화면 재촬영) — 화면 변경 없음 / 1.0.13 (2026-11-10) 지내력 52 판 1.1.0(보고서 PDF 불러오기 · 공별 지하수위 · 매뉴얼 Ver-1.1) / 1.0.12 (2026-11-09) 토목 52 N값 지내력 환산 등재 — 구조 2 · 토목 3 · KDS 41 19 00 · 11 50 05 근거 행 / 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
+VER = "1.0.25"   # 1.0.25 (2026-11-27) 휴대폰(640px 이하) 근거 표 카드형 — 법령별 카드 · 조문 칩 · 적용 도구 번호 링크 배지(44px), 641px 이상 표 그대로 · 글자 불변 · MIN 「F1~F3 모두 승인」 / 1.0.24 (2026-11-25) 헤더 고정 — 분류 탭 줄 sticky(태블릿 · 데스크톱만, 휴대폰 고정 없음 · 공통 원본 MM-HEADER v1.0 · 67.개발자료[헤더고정]) · 생성 때 MM-HEADER 구간 보존 / 1.0.23 (2026-11-25) 카드 판 52 지내력 6.1.0(Ver 6.1) · 46 설계하중 6.1.4 · 근거표 대조 2026-11-25 · 제48조의2 · 제60조 내진등급 병기 · 제4조 제목 · KDS 11 50 05 정식 명칭 · 요약칸 자동(건축 4차 교차검증 반영, §25-6-112) / 1.0.22 (2026-11-24) 카드 판 50 토목배관 6.1.4(건축 3차 교차검증 반영 · 매뉴얼 Ver-6.1, §25-6-111) / 1.0.21 (2026-11-23) 카드 판 51 옹벽 6.1.4(교차검증 반영 · §25-6-100) / 1.0.20 (2026-11-12) 카드 판 4종 한 단계씩(html2canvas SRI, 정밀검토 B8 · §25-6-87) / 1.0.19 (2026-11-12) 카드 판 4종 한 단계씩 · 포털 자체 Pretendard SRI(CDN 판 통일 · SRI, 정밀검토 C2 · §25-6-82) / 1.0.18 (2026-11-12) 카드 판 45 · 46 · 50 · 51 한 단계씩(건물개요 원본 v1.3, 정밀검토 C10 · C4 · §25-6-80) / 1.0.17 (2026-11-12) 카드 판 50 · 51 → 6.1(화면 확대 허용 · 입력값 경고 표시, 정밀검토 B17 · B10 · §25-6-78 · 79) / 1.0.16 (2026-11-11) 카드 판 46 설계하중 → 6.1(설하중 개정 예고 메모 · S6 안내) / 1.0.15 (2026-11-11) 카드 판 45 → 6.1(개정 메모 · 판 6.1, §25-6-68) · 근거표 건축법 · 시행령 2026-11-12 시행본 / 1.0.14 (2026-11-10) 사용자 매뉴얼 Ver-1.1(계산서 5종 · 지내력 포함 · 화면 재촬영) — 화면 변경 없음 / 1.0.13 (2026-11-10) 지내력 52 판 1.1.0(보고서 PDF 불러오기 · 공별 지하수위 · 매뉴얼 Ver-1.1) / 1.0.12 (2026-11-09) 토목 52 N값 지내력 환산 등재 — 구조 2 · 토목 3 · KDS 41 19 00 · 11 50 05 근거 행 / 1.0.10 (2026-10-31) 생성기 동기화 — 24장 · 25-6 수정을 템플릿에 반영(출력 = 배포 index.html) / 종전 1.0.0 (2026-10-30) 신설 — 구조 2 · 토목 2 · 근거 법령 · 설계기준 · 앱 설치 단추 · 사용자 매뉴얼
 CHECKED = "2026-11-25"          # 근거 조문 대조일
 BASE = "https://manminkim-eng.github.io"
 
@@ -83,8 +83,33 @@ def group(gid, gname, gsub):
     </div>
   </section>'''
 
+# 2026-11-27 모바일 표시 — 조문은 « · » 단위 칩, 적용 도구 번호는 도구 링크(글자 · 순서는 LAWS 그대로, 화면 641px 이상은 표 모양 그대로)
+def _split_arts(a):
+    out, buf, depth, i, dash = [], "", 0, 0, False   # dash: 괄호 밖 « — » 붙임 설명이 이 칩에 시작됨
+    while i < len(a):
+        c = a[i]
+        if c in "(（": depth += 1
+        elif c in ")）": depth = max(0, depth - 1)
+        if depth == 0 and a.startswith(" — ", i): dash = True
+        if depth == 0 and a.startswith(" · ", i):
+            rest = a[i + 3:]
+            keep = (re.match(r"제\d+[항호]", rest)                                   # 「제25조제8항 · 제9항」
+                    or (re.match(r"\d+(의\d+)?(\s|$|\()", rest) and not re.match(r"\d\d \d\d \d\d", rest))   # 「별표 1 · 3 · 5」(KDS 코드는 나눔)
+                    or (dash and not buf.endswith("대조")))                      # 「— 제16조 · 제26조 … 대조」 붙임 설명
+            if not keep:
+                out.append(buf); buf = ""; dash = False; i += 3; continue
+        buf += c; i += 1
+    out.append(buf)
+    return out
+def arts(a):
+    return '<span class="sep"> · </span>'.join(f'<span class="art">{e(x)}</span>' for x in _split_arts(a))
+_REPO = {t[0]: t[4] for t in TOOLS}
+def tools(t):
+    nums = [x.strip() for x in t.split("·")]
+    return '<span class="sep"> · </span>'.join(f'<a class="tno" href="../{_REPO[x]}/" aria-label="{x}번 계산서 열기">{x}</a>' if x in _REPO else e(x) for x in nums)
+
 law_rows = "".join(f'''
-        <tr><th scope="row">{e(n)}</th><td class="kind">{e(k)}</td><td class="cur">{nw(e(d))}</td><td>{e(a)}</td><td class="num">{e(t)}</td></tr>''' for n, k, d, a, t in LAWS)
+        <tr><th scope="row">{e(n)}</th><td class="kind">{e(k)}</td><td class="cur">{nw(e(d))}</td><td class="arts">{arts(a)}</td><td class="num tools">{tools(t)}</td></tr>''' for n, k, d, a, t in LAWS)
 
 tabs = f'<button class="tab on" data-tab="all" role="tab" aria-selected="true">전체 <span class="tn">{len(TOOLS)}</span></button>' + "".join(
     f'<button class="tab" data-tab="{g}" role="tab" aria-selected="false">{e(n)} <span class="tn">{sum(1 for t in TOOLS if t[1]==g)}</span></button>' for g, n, _ in GROUPS)
@@ -229,6 +254,27 @@ tbody th{{min-width:170px}}
 .note{{margin-top:14px;padding:14px 16px;border:1px solid var(--line2);border-left:3px solid var(--gold);border-radius:var(--radius);background:rgba(216,172,80,.05);font-size:var(--fs-sm)}}
 .note b{{color:var(--gold-lt)}}
 .note a{{color:var(--mech-lt)}}
+.law a.tno{{color:inherit;text-decoration:none}}
+.law a.tno:hover{{color:var(--pa-lt);text-decoration:underline}}
+/* 2026-11-27 휴대폰(640px 이하) — 근거 표를 법령별 카드로(글자 그대로, 표시만) */
+@media (max-width:640px){{
+  .law .tbl-wrap{{overflow:visible;border:0;background:transparent}}
+  .law table{{min-width:0;display:block}}
+  .law thead{{display:none}}
+  .law tbody{{display:grid;gap:10px}}
+  .law tbody tr{{display:block;background:var(--bg-card);border:1px solid var(--line);border-left:3px solid var(--pa);border-radius:var(--radius);padding:14px 14px 12px}}
+  .law tbody th,.law tbody td{{display:block;padding:0;border:0;min-width:0;white-space:normal}}
+  .law tbody th{{font-size:var(--fs-body);line-height:1.45;word-break:keep-all;margin-bottom:6px}}
+  .law tbody td:nth-of-type(1){{display:inline-block;font-family:var(--f-kr);font-size:var(--fs-cap);color:var(--pa-lt);border:1px solid var(--line2);border-radius:6px;padding:1px 7px;margin:0 6px 6px 0}}
+  .law tbody td:nth-of-type(2){{display:inline;font-family:var(--f-kr);font-size:var(--fs-cap);color:var(--t-sub);word-break:keep-all}}
+  .law tbody td:nth-of-type(2) .nw{{font-family:var(--f-mono)}}
+  .law td.arts{{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;font-size:var(--fs-sm);line-height:1.55}}
+  .law td.arts .sep,.law td.tools .sep{{display:none}}
+  .law td.arts .art{{background:var(--bg-deep);border:1px solid var(--line2);border-radius:6px;padding:3px 8px;word-break:keep-all}}
+  .law td.tools{{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}}
+  .law td.tools::before{{content:"적용 도구";font:600 var(--fs-cap) var(--f-kr);color:var(--t-sub);margin-right:4px}}
+  .law a.tno{{font:700 var(--fs-sm) var(--f-mono);min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--pa-lt);background:rgba(var(--pa-rgb),.12);border:1px solid rgba(var(--pa-rgb),.35)}}
+}}
 
 /* FOOTER */
 .ft{{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:var(--fs-sm);color:var(--t-sub)}}

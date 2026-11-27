@@ -137,6 +137,27 @@ tbody th{min-width:170px}
 .note{margin-top:14px;padding:14px 16px;border:1px solid var(--line2);border-left:3px solid var(--gold);border-radius:var(--radius);background:rgba(216,172,80,.05);font-size:var(--fs-sm)}
 .note b{color:var(--gold-lt)}
 .note a{color:var(--mech-lt)}
+.law a.tno{color:inherit;text-decoration:none}
+.law a.tno:hover{color:var(--pa-lt);text-decoration:underline}
+/* 2026-11-27 휴대폰(640px 이하) — 근거 표를 법령별 카드로(글자 그대로, 표시만) */
+@media (max-width:640px){
+  .law .tbl-wrap{overflow:visible;border:0;background:transparent}
+  .law table{min-width:0;display:block}
+  .law thead{display:none}
+  .law tbody{display:grid;gap:10px}
+  .law tbody tr{display:block;background:var(--bg-card);border:1px solid var(--line);border-left:3px solid var(--pa);border-radius:var(--radius);padding:14px 14px 12px}
+  .law tbody th,.law tbody td{display:block;padding:0;border:0;min-width:0;white-space:normal}
+  .law tbody th{font-size:var(--fs-body);line-height:1.45;word-break:keep-all;margin-bottom:6px}
+  .law tbody td:nth-of-type(1){display:inline-block;font-family:var(--f-kr);font-size:var(--fs-cap);color:var(--pa-lt);border:1px solid var(--line2);border-radius:6px;padding:1px 7px;margin:0 6px 6px 0}
+  .law tbody td:nth-of-type(2){display:inline;font-family:var(--f-kr);font-size:var(--fs-cap);color:var(--t-sub);word-break:keep-all}
+  .law tbody td:nth-of-type(2) .nw{font-family:var(--f-mono)}
+  .law td.arts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;font-size:var(--fs-sm);line-height:1.55}
+  .law td.arts .sep,.law td.tools .sep{display:none}
+  .law td.arts .art{background:var(--bg-deep);border:1px solid var(--line2);border-radius:6px;padding:3px 8px;word-break:keep-all}
+  .law td.tools{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+  .law td.tools::before{content:"적용 도구";font:600 var(--fs-cap) var(--f-kr);color:var(--t-sub);margin-right:4px}
+  .law a.tno{font:700 var(--fs-sm) var(--f-mono);min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;border-radius:8px;color:var(--pa-lt);background:rgba(var(--pa-rgb),.12);border:1px solid rgba(var(--pa-rgb),.35)}
+}
 
 /* FOOTER */
 .ft{margin-top:48px;padding-top:22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:var(--fs-sm);color:var(--t-sub)}
@@ -335,12 +356,12 @@ tbody th{min-width:170px}
     <table>
       <thead><tr><th scope="col">법령 · 기준</th><th scope="col">구분</th><th scope="col">현행</th><th scope="col">관련 조문 · 코드</th><th scope="col">적용 도구</th></tr></thead>
       <tbody>
-        <tr><th scope="row">건축법</th><td class="kind">법률</td><td class="cur"><span class="nw">2026-11-12</span> 시행(법률 제21880호 · <span class="nw">2026-11-25</span> 대조)</td><td>제48조(구조내력 등) · 제48조의2(건축물 내진등급의 설정)</td><td class="num">45 · 46</td></tr>
-        <tr><th scope="row">건축법 시행령</th><td class="kind">대통령령</td><td class="cur"><span class="nw">2026-11-12</span> 시행(대통령령 제36817호 · <span class="nw">2026-11-25</span> 대조 · 제32조 변동 없음)</td><td>제32조(구조 안전의 확인)</td><td class="num">45</td></tr>
-        <tr><th scope="row">건축물의 구조기준 등에 관한 규칙</th><td class="kind">국토교통부령</td><td class="cur"><span class="nw">2024-12-17</span> 시행</td><td>제56조(적용범위) · 제58조(구조안전확인서 제출) · 별표 11(중요도 및 중요도계수) · 제60조(건축물의 내진등급기준) · 별표 12(건축물의 내진등급기준)</td><td class="num">45 · 46</td></tr>
-        <tr><th scope="row">시설물의 안전 및 유지관리에 관한 특별법 시행령</th><td class="kind">대통령령</td><td class="cur"><span class="nw">2026-09-15</span> 시행</td><td>제4조(시설물의 종류) · 별표 1(제1종시설물 및 제2종시설물의 종류) 제8호 옹벽 및 절토사면</td><td class="num">51</td></tr>
-        <tr><th scope="row">KDS 41 건축구조기준</th><td class="kind">국가건설기준(KCSC)</td><td class="cur">국가건설기준센터 현행본</td><td>41 12 00 건축물 설계하중 · 41 17 00 건축물 내진설계기준 · 41 19 00 건축물 기초구조 설계기준</td><td class="num">45 · 46 · 52</td></tr>
-        <tr><th scope="row">KDS 17 · 61 · 11 설계기준</th><td class="kind">국가건설기준(KCSC)</td><td class="cur">국가건설기준센터 현행본</td><td>17 10 00 내진설계 일반 · 61 10 00 하수도설계 일반사항 · 61 40 00 관로시설 설계기준 · 11 80 05 콘크리트옹벽 · 11 60 00 앵커 설계기준 · 11 70 05 쌓기·깎기 · 11 50 05 얕은기초 설계기준(일반설계법) · 11 30 05 연약지반 설계 일반</td><td class="num">46 · 50 · 51 · 52</td></tr>
+        <tr><th scope="row">건축법</th><td class="kind">법률</td><td class="cur"><span class="nw">2026-11-12</span> 시행(법률 제21880호 · <span class="nw">2026-11-25</span> 대조)</td><td class="arts"><span class="art">제48조(구조내력 등)</span><span class="sep"> · </span><span class="art">제48조의2(건축물 내진등급의 설정)</span></td><td class="num tools"><a class="tno" href="../Seismic-Evaluation/" aria-label="45번 계산서 열기">45</a><span class="sep"> · </span><a class="tno" href="../architectural-structure/" aria-label="46번 계산서 열기">46</a></td></tr>
+        <tr><th scope="row">건축법 시행령</th><td class="kind">대통령령</td><td class="cur"><span class="nw">2026-11-12</span> 시행(대통령령 제36817호 · <span class="nw">2026-11-25</span> 대조 · 제32조 변동 없음)</td><td class="arts"><span class="art">제32조(구조 안전의 확인)</span></td><td class="num tools"><a class="tno" href="../Seismic-Evaluation/" aria-label="45번 계산서 열기">45</a></td></tr>
+        <tr><th scope="row">건축물의 구조기준 등에 관한 규칙</th><td class="kind">국토교통부령</td><td class="cur"><span class="nw">2024-12-17</span> 시행</td><td class="arts"><span class="art">제56조(적용범위)</span><span class="sep"> · </span><span class="art">제58조(구조안전확인서 제출)</span><span class="sep"> · </span><span class="art">별표 11(중요도 및 중요도계수)</span><span class="sep"> · </span><span class="art">제60조(건축물의 내진등급기준)</span><span class="sep"> · </span><span class="art">별표 12(건축물의 내진등급기준)</span></td><td class="num tools"><a class="tno" href="../Seismic-Evaluation/" aria-label="45번 계산서 열기">45</a><span class="sep"> · </span><a class="tno" href="../architectural-structure/" aria-label="46번 계산서 열기">46</a></td></tr>
+        <tr><th scope="row">시설물의 안전 및 유지관리에 관한 특별법 시행령</th><td class="kind">대통령령</td><td class="cur"><span class="nw">2026-09-15</span> 시행</td><td class="arts"><span class="art">제4조(시설물의 종류)</span><span class="sep"> · </span><span class="art">별표 1(제1종시설물 및 제2종시설물의 종류) 제8호 옹벽 및 절토사면</span></td><td class="num tools"><a class="tno" href="../tomog-ongbyeog/" aria-label="51번 계산서 열기">51</a></td></tr>
+        <tr><th scope="row">KDS 41 건축구조기준</th><td class="kind">국가건설기준(KCSC)</td><td class="cur">국가건설기준센터 현행본</td><td class="arts"><span class="art">41 12 00 건축물 설계하중</span><span class="sep"> · </span><span class="art">41 17 00 건축물 내진설계기준</span><span class="sep"> · </span><span class="art">41 19 00 건축물 기초구조 설계기준</span></td><td class="num tools"><a class="tno" href="../Seismic-Evaluation/" aria-label="45번 계산서 열기">45</a><span class="sep"> · </span><a class="tno" href="../architectural-structure/" aria-label="46번 계산서 열기">46</a><span class="sep"> · </span><a class="tno" href="../Soil-Bearing-Capacity/" aria-label="52번 계산서 열기">52</a></td></tr>
+        <tr><th scope="row">KDS 17 · 61 · 11 설계기준</th><td class="kind">국가건설기준(KCSC)</td><td class="cur">국가건설기준센터 현행본</td><td class="arts"><span class="art">17 10 00 내진설계 일반</span><span class="sep"> · </span><span class="art">61 10 00 하수도설계 일반사항</span><span class="sep"> · </span><span class="art">61 40 00 관로시설 설계기준</span><span class="sep"> · </span><span class="art">11 80 05 콘크리트옹벽</span><span class="sep"> · </span><span class="art">11 60 00 앵커 설계기준</span><span class="sep"> · </span><span class="art">11 70 05 쌓기·깎기</span><span class="sep"> · </span><span class="art">11 50 05 얕은기초 설계기준(일반설계법)</span><span class="sep"> · </span><span class="art">11 30 05 연약지반 설계 일반</span></td><td class="num tools"><a class="tno" href="../architectural-structure/" aria-label="46번 계산서 열기">46</a><span class="sep"> · </span><a class="tno" href="../civil-engineering-piping/" aria-label="50번 계산서 열기">50</a><span class="sep"> · </span><a class="tno" href="../tomog-ongbyeog/" aria-label="51번 계산서 열기">51</a><span class="sep"> · </span><a class="tno" href="../Soil-Bearing-Capacity/" aria-label="52번 계산서 열기">52</a></td></tr>
       </tbody>
     </table>
   </div>
