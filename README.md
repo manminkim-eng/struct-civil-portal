@@ -18,6 +18,12 @@
 - 배포 경로: https://manminkim-eng.github.io/struct-civil-portal/
 - 구성: index.html · manifest.json · sw.js(캐시 접두어 manmin-sc-portal-) · icons/ · assets/fonts/(로컬 폴백) · _tools/ · manual/
 
+## v1.0.26 (2026-11-28) — 웹 코드 보호 3단계(빌드 배포)
+
+- 저장소에는 빌드 산출물만 올린다: Z: 정본을 `69.개발자료[빌드공통]\버전s-1.0\manmin-build-v1.0\build.mjs`로 빌드한 `struct-civil-portal-v1.0.26-dist`. 고칠 때는 Z: 원본을 고치고 다시 빌드한다.
+- 빌드: 인라인 스크립트 terser 압축 · 주석 제거. 계산 · 인쇄 · 설치 동작 불변.
+- 하단 「무단 복제 · 재배포 금지」 · LICENSE(All rights reserved) · sw 캐시명 v1.0.26.
+
 ## v1.0.24 (2026-11-25) — 헤더 고정(MM-HEADER v1.1)
 
 - 헤더 고정 — 공통 원본 MM-HEADER v1.1 주입(태블릿 · 데스크톱만 — 폭 768px · 높이 600px 이상, 휴대폰은 고정 없음 · 머리+탭 sticky · 내리면 제목 한 줄+탭으로 접힘 · 다른 sticky 패널 top 보정) — 계산 · 인쇄 불변 · MIN 「추천안대로 승인」 · 「추천안대로 진행해줘」(모바일 제외).
